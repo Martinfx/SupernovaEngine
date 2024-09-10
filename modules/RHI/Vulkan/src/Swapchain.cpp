@@ -3,6 +3,8 @@
 #include "VkCheck.hpp"
 #include "tracy/Tracy.hpp"
 
+#include <algorithm>
+
 // https://www.intel.com/content/www/us/en/developer/articles/training/api-without-secrets-introduction-to-vulkan-part-2.html?language=en#inpage-nav-4-5
 
 namespace rhi {
