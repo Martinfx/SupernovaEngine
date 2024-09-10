@@ -1,3 +1,5 @@
+#include <ranges>
+
 #include "rhi/RenderDevice.hpp"
 #include "FeatureBuilder.hpp"
 #include "DebugCallback.hpp"
@@ -14,8 +16,6 @@
 #  include "spdlog/sinks/stdout_color_sinks.h"
 #endif
 #include "spdlog/spdlog.h"
-
-#include <ranges>
 
 // In case of a crash in NSIGHT Graphics, comment the following line.
 #define _USE_VALIDATION_LAYERS _DEBUG
@@ -445,7 +445,7 @@ RenderDevice::createPipelineLayout(const PipelineLayoutInfo &layoutInfo) {
     kMinNumDescriptorSets);
 
   for (auto [set, bindings] :
-       layoutInfo.descriptorSets | std::views::enumerate) {
+       layoutInfo.descriptorSets) {
     for (const auto &binding : bindings) {
       hashCombine(hash, set, binding);
     }
