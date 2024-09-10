@@ -1053,7 +1053,7 @@ defaultDeviceSelector(std::span<const PhysicalDevice> physicalDevices) {
     return device.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU;
   };
   const auto it = std::ranges::find_if(physicalDevices, isDiscreteType);
-  return it != physicalDevices.cend() ? *it : physicalDevices.front();
+  return it != physicalDevices.end() ? *it : physicalDevices.front();
 }
 
 PhysicalDeviceSelector selectVendor(const Vendor vendor) {
@@ -1062,7 +1062,7 @@ PhysicalDeviceSelector selectVendor(const Vendor vendor) {
       return device.properties.vendorID == std::to_underlying(vendor);
     };
     const auto it = std::ranges::find_if(physicalDevices, isMadeBy);
-    return it != physicalDevices.cend() ? *it : PhysicalDevice{};
+    return it != physicalDevices.end() ? *it : PhysicalDevice{};
   };
 }
 
