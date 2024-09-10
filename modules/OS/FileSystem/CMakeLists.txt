@@ -32,6 +32,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
 	)
 
 else()
+	target_include_directories(FileSystem PRIVATE /usr/local/include/)
         target_link_libraries(FileSystem
   	PRIVATE ${minizip_LIBRARIES}
   	PUBLIC StringUtility

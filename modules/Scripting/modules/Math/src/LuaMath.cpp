@@ -59,7 +59,7 @@ void registerFreeFunctions(sol::table &lua) {
   lua.set_function("max", GEN_TYPE_X2(glm::max));
   lua.set_function("clamp", GEN_TYPE_X3(glm::clamp));
 
-  lua.set_function("mix", GEN_TYPE_X3(glm::mix));
+//  lua.set_function("mix", GEN_TYPE_X3(glm::mix));
 #pragma endregion
 #pragma region trigonometric
   lua.set_function("degrees", GEN_TYPE_X(glm::degrees));

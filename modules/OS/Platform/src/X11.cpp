@@ -18,7 +18,7 @@
 #include <string>
 #include <utility> // to_underlying
 #include <ranges>
-
+#include <algorithm>
 /*
 libxcb-util-dev     -> X11::xcb_util
 libxcb-icccm4-dev   -> X11::xcb_icccm
@@ -117,7 +117,7 @@ void shutdownClipboard() {
 
 [[nodiscard]] bool isKnownTarget(const xcb_atom_t atom) {
   const auto targets = std::span{g_knownTargets, KnownTarget_Count};
-  return std::ranges::find(targets, atom) != targets.cend();
+  return std::ranges::find(targets, atom) != targets.end();
 }
 
 bool handleSelectionNotify(const xcb_selection_notify_event_t *evt) {

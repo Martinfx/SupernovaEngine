@@ -21,7 +21,8 @@ target_link_libraries(VorbisDecoder
   PRIVATE Ogg::ogg Vorbis::vorbis Vorbis::vorbisenc Vorbis::vorbisfile
 )
 else()
-target_link_libraries(VorbisDecoder
+  target_include_directories(VorbisDecoder PRIVATE /usr/local/include/)
+  target_link_libraries(VorbisDecoder
   PUBLIC AudioDecoder
   PRIVATE ${VORBISENC_LIBRARY} ${VORBISFILE_LIBRARY} ${VORBIS_LIBRARY} ${OGG_LIBRARY})
 endif()
