@@ -20,6 +20,19 @@ elseif(LINUX)
     X11::xcb_randr
     X11::X11_xcb
   )
+else()
+  target_sources(Platform PRIVATE "src/XPlatform.cpp" "include/os/X11.hpp" "src/X11.cpp")
+
+  find_package(X11 REQUIRED)
+  target_link_libraries(Platform PRIVATE
+    X11::xcb
+    X11::xcb_util
+    X11::xcb_icccm
+    X11::xcb_ewmh
+    X11::xcb_xfixes
+    X11::xcb_keysyms
+    X11::xcb_randr
+    X11::X11_xcb)
 endif()
 
 set_target_properties(Platform PROPERTIES FOLDER "Framework/OS")

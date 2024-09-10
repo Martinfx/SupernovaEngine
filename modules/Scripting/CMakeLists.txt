@@ -1,4 +1,7 @@
-find_package(Lua CONFIG REQUIRED)
+#find_package(Lua 5.1 CONFIG REQUIRED)
+find_package(Lua "5.1" EXACT REQUIRED)
+MESSAGE(${LUA_VERSION_STRING} " " ${LUA_INCLUDE_DIR} " " ${LUA_LIBRARIES})
+
 find_package(spdlog REQUIRED)
 
 FetchContent_Declare(sol2

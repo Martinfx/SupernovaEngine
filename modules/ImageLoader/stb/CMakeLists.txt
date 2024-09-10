@@ -1,4 +1,7 @@
+set(STB_INCLUDE_DIRS ${CMAKE_CURRENT_LIST_DIR}/build/_deps/assimp-src/contrib/stb/)
 find_path(STB_INCLUDE_DIRS "stb_image.h")
+#find_package(Stb REQUIRED)
+
 
 add_library(STBImageLoader "include/STBImageLoader.hpp" "src/STBImageLoader.cpp")
 target_link_libraries(STBImageLoader
