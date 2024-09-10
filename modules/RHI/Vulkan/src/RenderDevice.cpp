@@ -444,14 +444,16 @@ RenderDevice::createPipelineLayout(const PipelineLayoutInfo &layoutInfo) {
   std::vector<VkDescriptorSetLayout> descriptorSetLayouts(
     kMinNumDescriptorSets);
 
-  for (auto [set, bindings] :
-       layoutInfo.descriptorSets) {
-    for (const auto &binding : bindings) {
-      hashCombine(hash, set, binding);
-    }
-    auto [_, handle] = createDescriptorSetLayout(bindings);
-    descriptorSetLayouts[set] = handle;
+  auto set = 0;
+  for (const auto &bindings : layoutInfo.descriptorSets) {
+     for (const auto &binding : bindings) {
+         hashCombine(hash, set, binding);
   }
+  auto [_, handle] = createDescriptorSetLayout(bindings);
+  descriptorSetLayouts[set] = handle;
+  ++set;
+  }
+
   for (const auto &range : layoutInfo.pushConstantRanges)
     hashCombine(hash, range);
 
