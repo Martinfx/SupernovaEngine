@@ -12,7 +12,6 @@ namespace rhi {
 
 VkImageAspectFlags toVk(const rhi::ImageAspect);
 
-#if _DEBUG
 namespace {
 
 [[nodiscard]] auto validRange(const Buffer &buffer, const VkDeviceSize offset,
@@ -24,7 +23,6 @@ namespace {
 }
 
 } // namespace
-#endif
 
 //
 // DescriptorSetBuilder class:
